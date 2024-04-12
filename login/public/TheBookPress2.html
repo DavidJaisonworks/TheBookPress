@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheBookPress</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f2e8fb;
+            color: #D14836;
+            margin: 0; /* Remove default body margin */
+        }
+        
+        .container {
+            flex: 1;
+        }
+        
+        .header-navbar {
+            background-color: #383636;
+            color: #fff;
+        }
+        P{
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        footer {
+            margin-top: auto; /* Push the footer to the bottom */
+            background-color: #383636;
+            color: #D14836;
+        }
+        
+        footer a {
+            color: #ECD06F;
+        }
+        
+        /* Adjust toggle button position */
+        .navbar-toggler {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="MyController">
+    <nav class="navbar navbar-expand-lg navbar-light header-navbar">
+        <a class="navbar-brand" href="#" > <img src="Logo.png" alt="TheBookPress"></a>
+        <button class="navbar-toggler" type="button" ng-click="toggleNavbar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div ng-class="{'collapse': !navbarCollapsed, 'navbar-collapse': true}" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!" style="color:#ECD06F"> <span class="sr-only">(current)</span>Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="books3.html" style="color: #ECD06F;">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.html" style="color: #ECD06F;">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Aboutus.html" style="color: #ECD06F;">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" style="color: #ECD06F;">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h1>Welcome to <em style="color:#383636;">TheBookPress </em>an Online BookStore!</h1>
+                    <p style="color:#383636">We offer a wide variety of books for you to choose from. Browse our collection and find the perfect book for you.</p>
+                    <a href="books3.html" class="btn btn-primary">Shop Now</a>
+                </div>
+                <div class="col-12 col-md-6">
+                    <img src="Red.png" alt="Book" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="navbar-fluid footer text-center text-lg-start">
+        <div class="text-center p-3 " style="color: white;">
+          © 2024 Copyright:
+          <a href="https://ThebookPress.com/">TheBookPress.com</a>
+        </div>
+    </footer>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('MyController', function($scope) {
+            $scope.navbarCollapsed = true;
+            $scope.toggleNavbar = function() {
+                $scope.navbarCollapsed = !$scope.navbarCollapsed;
+            };
+        });
+    </script>
+</body>
+</html>

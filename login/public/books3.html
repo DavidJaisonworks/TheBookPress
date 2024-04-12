@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Books</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f2e8fb;
+            color: #D14836;
+            margin: 0; /* Remove default body margin */
+        }
+        h1{
+            color:#D14836;
+            text-decoration: underline;
+        }
+        h3{
+            color:blueviolet; /* Golden yellow headings */
+
+        }
+        h2{
+            color:#D14836; /* Golden yellow headings */
+            text-decoration: underline;
+        }
+        /* Add custom styles here */
+        .book-img {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            border-radius: 15px;
+                box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+                overflow: hidden;
+        }
+        .book-img:hover {
+            transform: scale(1.1);
+        }
+        .quantity {
+            display: inline-block;
+            width: 40px;
+            text-align: center;
+        }
+         /* Add custom styles here */
+        .book  img {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 20%; /* Set width to 20% to fit 5 images in a row */
+            margin-right: 2%; /* Add some margin between images */
+        }
+        .book img:hover {
+            transform: scale(1.1);
+        }
+        .quantity {
+            display: inline-block;
+            width: 40px;
+            text-align: center;
+        }
+        .header-navbar {
+            background-color: #383636;
+            color: #fff;
+        }
+        
+        footer {
+            margin-top: auto; /* Push the footer to the bottom */
+            background-color: #383636;
+            color: #D14836;
+        }
+        
+        footer a {
+            color: #ECD06F;
+        }
+        
+        /* Adjust toggle button position */
+        .navbar-toggler {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="MyController">
+    <nav class="navbar navbar-expand-lg navbar-light header-navbar">
+        <a class="navbar-brand" href="#" > <img src="Logo.png" alt="TheBookPress"></a>
+        <button class="navbar-toggler" type="button" ng-click="toggleNavbar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div ng-class="{'collapse': !navbarCollapsed, 'navbar-collapse': true}" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="TheBookPress2.html" style="color: #ECD06F;">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" style="color:#ECD06F"> <span class="sr-only">(current)</span>Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.html" style="color: #ECD06F;">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Aboutus.html" style="color: #ECD06F;">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" style="color: #ECD06F;">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section>
+        <div class="book">
+        <div class="container mt-5">
+            <h1 class="mb-4">Order Books</h1>
+            <div class="column">
+    
+                <!-- Sci-fi Books -->
+                <div class="row-md-3 mb-4">
+                    <h3 class="mb-3">Sci-fi</h3>
+                    <a href="#" class="add-to-cart" data-name="THE GUARDIAN" data-price="590">
+                        <img src="Img\sci-fic 1.jpg" class=" img-fluid book-img" alt="Sci-fi Book 1">
+                    </a>
+                    <a href="#" class="add-to-cart" data-name="THE DARK SPRING" data-price="545">
+                        <img src="Img\sci-fic 2.jpg" class=" img-fluid book-img" alt="Sci-fi Book 1"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="THE KID FROM SPACE" data-price="430">
+                        <img src="Img\sci-fic 3.jpg" class=" img-fluid book-img" alt="Sci-fi Book 3"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="THEORY OF EVERYTHING" data-price="535">
+                        <img src="Img\sci-fic 4.jpg" class=" img-fluid book-img" alt="Sci-fi Book 4"></a>
+                </div>
+                <!-- Novels -->
+                <div class="row-md-3 mb-4">
+                    <h3 class="mb-3">Novels</h3>
+                    <a href="#" class="add-to-cart" data-name="IT ENDS WITH US" data-price="150">
+                        <img src="Img\Novel 1.jpg" class="img-fluid book-img" alt="Novel Book 1">
+                    </a>
+                    <a href="#" class="add-to-cart" data-name="RUSKIN BOND" data-price="200">
+                        <img src="Img\Novel 2.jpg" class="img-fluid book-img" alt="Novel Book 2"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="PURSUIT OF HAPPINESS" data-price="720">
+                        <img src="Img\Novel 3.jpg" class="img-fluid book-img" alt="Novel Book 3"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="THE GIRL FROM THE MOON" data-price="300">
+                        <img src="Img\Novel 4.jpg" class="img-fluid book-img" alt="Novel Book 4"></a></a>
+                </div>
+                <!-- Engineering Books -->
+                <div class="row-md-3 mb-4">
+                    <h3 class="mb-3">Engineering</h3>
+                    <a href="#" class="add-to-cart" data-name="MECHANICAL ENGINEERING BOOK" data-price="450">
+                        <img src="Img\Engee 1.jpg" class="img-fluid book-img" alt="Engineering Book 1"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="AEROSPACE ENGINEERING BOOK" data-price="550">
+                        <img src="Img\Engee 2.jpg" class="img-fluid book-img" alt="Engineering Book 2"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="CSE & IT" data-price="600">
+                        <img src="Img\Engee 3.jpg" class="img-fluid book-img" alt="Engineering Book 3"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="GATE EXAM" data-price="650">
+                        <img src="Img\Engee 4.jpg" class="img-fluid book-img" alt="Engineering Book 4"></a>
+    
+                </div>
+                <!-- Storybooks -->
+                <div class="row-md-3 mb-4">
+                    <h3 class="mb-3">Storybooks</h3>
+                    <a href="#" class="add-to-cart" data-name="HARRY POTTER" data-price="699">
+                        <img src="Img\story 1.jpg" class="img-fluid book-img" alt="Storybook 1"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="DISNEY MULAN" data-price="299">
+                        <img src="Img\story 2.jpg" class="img-fluid book-img" alt="Storybook 2"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="DISNEY ALLADIN" data-price="399">
+                        <img src="Img\story 3.jpg" class="img-fluid book-img" alt="Storybook 3"></a>
+    
+                    <a href="#" class="add-to-cart" data-name="DISNEY PETER PAN" data-price="599">
+                        <img src="Img\story 4.jpg" class="img-fluid book-img" alt="Storybook 4"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <footer class="navbar-fluid footer text-center text-lg-start">
+        <div class="text-center p-3 " style="color: white;">
+          © 2024 Copyright:
+          <a href="https://ThebookPress.com/">TheBookPress.com</a>
+        </div>
+    </footer>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('MyController', function($scope) {
+            $scope.navbarCollapsed = true;
+            $scope.toggleNavbar = function() {
+                $scope.navbarCollapsed = !$scope.navbarCollapsed;
+            };
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var cart = [];
+
+            // Function to add item to cart
+            $(".add-to-cart").click(function (event) {
+                event.preventDefault();
+                var name = $(this).attr("data-name");
+                var price = Number($(this).attr("data-price"));
+                var item = {
+                    name: name,
+                    price: price,
+                    quantity: 1
+                };
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].name === name) {
+                        cart[i].quantity++;
+                        updateCart();
+                        return;
+                    }
+                }
+                cart.push(item);
+                updateCart();
+            });
+
+            // Function to remove item from cart
+            $("#cart").on("click", ".remove-from-cart", function (event) {
+                var name = $(this).attr("data-name");
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].name === name) {
+                        cart.splice(i, 1);
+                        break;
+                    }
+                }
+                updateCart();
+            });
+
+            // Function to increase item quantity in cart
+            $("#cart").on("click", ".increment", function (event) {
+                var name = $(this).attr("data-name");
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].name === name) {
+                        cart[i].quantity++;
+                        updateCart();
+                        return;
+                    }
+                }
+            });
+
+            // Function to decrease item quantity in cart
+            $("#cart").on("click", ".decrement", function (event) {
+                var name = $(this).attr("data-name");
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].name === name) {
+                        if (cart[i].quantity > 1) {
+                            cart[i].quantity--;
+                        } else {
+                            cart.splice(i, 1);
+                        }
+                        updateCart();
+                        return;
+                    }
+                }
+            });
+
+            // Function to update cart display
+            function updateCart() {
+                var total = 0;
+                var cartHtml = "<ul>";
+                for (var i = 0; i < cart.length; i++) {
+                    cartHtml += "<li>" + cart[i].name + " - rs. " + (cart[i].price * cart[i].quantity).toFixed(2) +
+                        " <button class='btn btn-sm btn-primary increment' data-name='" + cart[i].name + "'>+</button>" +
+                        " <span class='quantity'>" + cart[i].quantity + "</span>" +
+                        " <button class='btn btn-sm btn-warning decrement' data-name='" + cart[i].name + "'>-</button>" +
+                        " <button class='btn btn-sm btn-danger remove-from-cart' data-name='" + cart[i].name + "'>Remove</button></li> <br>";
+                    total += (cart[i].price * cart[i].quantity);
+                }
+                cartHtml += "</ul>";
+                cartHtml += "<strong>Total: rs. " + total.toFixed(2) + "</strong>";
+                $("#cart").html(cartHtml);
+                // Save cart data to local storage
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }
+
+            // Function to handle Buy Now button click
+            $("#buy-now-btn").click(function () {
+                // Redirect to cart page
+                window.location.href = "cart.html";
+            });
+        });
+    </script>
+</body>
+</html>
+    
